@@ -1,0 +1,32 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+}
+
+h1 {
+	color: green;
+	padding: 20px;
+}
+
+#comiclinks > a {
+	display: block;
+	margin-right: 0px;
+	margin-left: 0px;
+	/*background-color: green;*/
+	padding: 20px;
+	text-decoration: none;
+	font-size: 1em;
+	color: black;
+	transition: margin 1s;
+}
+
+#comiclinks > a:hover{
+	color: yellow;
+	margin-right: 20vw;
+	margin-left: 20vw;
+}
+
+body {
+	text-align: center;
+}

@@ -1,0 +1,61 @@
+* {
+	margin: 0px; /* Basic CSS reset because some things are annoying */
+	padding: 0px;
+}
+
+body {
+	display: grid;
+	grid-template-areas:
+	'nav        nav        nav        nav        nav'
+	'comictitle comictitle comictitle comictitle comictitle'
+	'comicdate  comicdate  comicdate  comicdate  comicdate'
+	'comic      comic      comic      comic      comic'
+	'navfirst   navback    .          navnext    navlast';
+	text-align: center;
+	min-height: 100vh;
+}
+
+#nav > a {
+	background-color: yellow;
+	padding: 10px;
+}
+
+#nav{
+	grid-area: nav;
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+#comic{
+	grid-area: comic;
+}
+
+#title{
+	grid-area: comictitle;
+}
+
+#firstLink{
+	grid-area: navfirst;
+}
+
+#backLink{
+	grid-area: navback;
+}
+
+#nextLink{
+	grid-area: navnext;
+}
+
+#lastLink{
+	grid-area: navlast;
+}
+
+#comicdate{
+	grid-area: comicdate;
+}
+
+.comicnavlink{
+	background-color: grey;
+	padding: 20px;
+	margin: auto;
+}

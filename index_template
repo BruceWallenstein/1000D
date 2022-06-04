@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>{sitename}</title>
+		<link rel="stylesheet" href="main.css" />
+	</head>
+	<body>
+		<h1>{sitename}</h1>
+		<div id = "comiclinks">
+			{comiclinks}
+		</div>
+	</body>
+</html>

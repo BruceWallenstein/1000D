@@ -1,0 +1,134 @@
+#!/usr/bin/python3
+## Build script for the comic.
+## Dates start from day 1 of the comic (Jun 3rd, 2022).
+import sys
+
+if len(sys.argv) > 1:
+    if sys.argv[1] == "-help":
+        print("Note: This will NOT run a build since you used -help.\n")
+        print("To add a new comic entry, add a new line to 'comic.cnf' in the format <days_since_first> <name_in_double_quotes> <filename>")
+        print("Ex.\n0 \"My First Comic\" my_first_comic.png")
+        print("You'll also need to add the file under 'webcomic'. The filenames are automatically assumed to stem from there.")
+        print()
+        print("To print this help message, run `./load -help`. To clear the workspace (delete all HTML files, so they can be regenerated freshly), run `./load -clear`.")
+        sys.exit(0)
+    elif sys.argv[1] == "-clear":
+        pass ## TODO: add clearing
+
+SITENAME = "Tales from the 1000 Dimensions"
+LOGO = "logo.png"
+
+import datetime
+
+conceptiondate = datetime.datetime(2022, 6, 3)
+
+indexTemplateFile = open("index_template")
+indexTemplate = indexTemplateFile.read()
+indexTemplateFile.close()
+
+comicTemplateFile = open("comic_template")
+comicTemplate = comicTemplateFile.read()
+comicTemplateFile.close()
+
+
+
+comiclist = open("comic.cnf")
+
+comicsplit = comiclist.read().split("\n")
+
+comiclist.close()
+
+def replaceMany(string, things, r):
+    for x in things:
+        string = string.replace(x, r)
+    return string
+
+
+def convertNameToWeb(name):
+    name = replaceMany(name, ["(", ")", "{", "}", "[", "]", ",", ".", "/", "\\", "!", "@", "#", "$", "%", "^", "&", "*"], "")
+    name = replaceMany(name, [" ", "_"], "-")
+    return name
+
+
+def getComicDataFromComicString(comicString):
+    phase = 0
+    date = ""
+    name = ""
+    comicfile = ""
+    escape = False
+    for x in comicString:
+        if phase == 0:
+            if x == " ":
+                phase = 1
+                date = int(date)
+            else:
+                date += x
+        elif phase == 1:
+            if x == '"':
+                phase = 2
+        elif phase == 2:
+            if escape:
+                escape = False ## Skip a round
+            elif x == '"':
+                phase = 3
+            elif x == '\\':
+                escape = True
+            else:
+                name += x
+        elif phase == 3:
+            if x != " ":
+                phase = 4
+                comicfile += x
+        elif phase == 4:
+            comicfile += x
+    return (date, name, comicfile)
+
+def convertDateToRegular(date):
+    return (conceptiondate + datetime.timedelta(days=date)).strftime("%B %d, %Y")
+
+
+comicsplit = [x for x in comicsplit if x != ""]
+
+firstcomic = getComicDataFromComicString(comicsplit[0])
+latestcomic = getComicDataFromComicString(comicsplit[-1])
+
+comiclinks = []
+
+namesSoFar = []
+
+for n in range(0, len(comicsplit)): ## For the record, I'm doing it wrong.
+    comic = comicsplit[n]
+    nextcomic = "CAP"
+    lastcomic = "CAP"
+    if n > 0:
+        lastcomic = convertNameToWeb(getComicDataFromComicString(comicsplit[n - 1])[1])
+    if n < len(comicsplit) - 1:
+        nextcomic = convertNameToWeb(getComicDataFromComicString(comicsplit[n + 1])[1])
+    date, name, file = getComicDataFromComicString(comic)
+    nicedate = convertDateToRegular(date)
+    websafename = convertNameToWeb(name)
+    if websafename in namesSoFar:
+        print("ERROR: you have a duplicate comic name. This build will not succeed until you fix it. The comic name is " + name)
+        break;
+    namesSoFar.append(websafename)
+    url = websafename + ".html"
+    print("Comic name:", name, "\nComic file:", file, "\n")
+    comicFile = open(url, "w+")
+    comicFile.write(comicTemplate.format(comicimage = "webcomic/" + file,\
+                                         logo = LOGO,\
+                                         sitename = SITENAME,\
+                                         comicname = name,\
+                                         comicdate = nicedate,\
+                                         firstLink = convertNameToWeb(firstcomic[1]),\
+                                         backLink = lastcomic,\
+                                         nextLink = nextcomic,\
+                                         lastLink = convertNameToWeb(latestcomic[1])))
+    comiclinks.append("<a href=\"" + websafename + "\"'>" + nicedate + " (#" + str(n+1) + "): " + name + "</a>")
+
+comiclinks.reverse()
+
+indexHTMLFile = open("index.html", "w+")
+indexHTMLFile.write(indexTemplate.format(sitename = SITENAME, comiclinks = "".join(comiclinks)))
+indexHTMLFile.close()
+
+print("Run this script with -help for instructions on adding new comics.")

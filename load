@@ -15,7 +15,8 @@ if len(sys.argv) > 1:
     elif sys.argv[1] == "-clear":
         pass ## TODO: add clearing
 
-SITENAME = "Tales from the 1000 Dimensions"
+SITENAME = "1000D"
+BASEURL = "/1000D" ## This is for relative links. The entire site will break if it's not set properly!
 LOGO = "logo.png"
 
 import datetime
@@ -119,6 +120,7 @@ for n in range(0, len(comicsplit)): ## For the record, I'm doing it wrong.
                                          sitename = SITENAME,\
                                          comicname = name,\
                                          comicdate = nicedate,\
+                                         baseurl = BASEURL,\
                                          firstLink = convertNameToWeb(firstcomic[1]),\
                                          backLink = lastcomic,\
                                          nextLink = nextcomic,\
@@ -128,7 +130,7 @@ for n in range(0, len(comicsplit)): ## For the record, I'm doing it wrong.
 comiclinks.reverse()
 
 indexHTMLFile = open("index.html", "w+")
-indexHTMLFile.write(indexTemplate.format(sitename = SITENAME, comiclinks = "".join(comiclinks)))
+indexHTMLFile.write(indexTemplate.format(sitename = SITENAME, comiclinks = "".join(comiclinks), baseurl = BASEURL))
 indexHTMLFile.close()
 
 print("Run this script with -help for instructions on adding new comics.")

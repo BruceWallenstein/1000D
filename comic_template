@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div id="nav">
-			<a href="../" id="home" class="navbutton">
+			<a href="/tales-from-the-1000-dimensions" id="home" class="navbutton">
 				<img src="{logo}" alt="{sitename} logo" />
 			</a>
 		</div>

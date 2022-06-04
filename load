@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 ## Build script for the comic.
 ## Dates start from day 1 of the comic (Jun 3rd, 2022).
-import sys
+import sys, os
 
 if len(sys.argv) > 1:
     if sys.argv[1] == "-help":
@@ -97,6 +97,15 @@ comiclinks = []
 
 namesSoFar = []
 
+def clearWorkspace():
+    files = os.listdir(".")
+    for x in files:
+        if x.endswith(".html"):
+            os.remove(x)
+
+
+clearWorkspace()
+
 for n in range(0, len(comicsplit)): ## For the record, I'm doing it wrong.
     comic = comicsplit[n]
     nextcomic = "CAP"
@@ -106,14 +115,19 @@ for n in range(0, len(comicsplit)): ## For the record, I'm doing it wrong.
     if n < len(comicsplit) - 1:
         nextcomic = convertNameToWeb(getComicDataFromComicString(comicsplit[n + 1])[1])
     date, name, file = getComicDataFromComicString(comic)
+    print("Comic name:", name, "\nComic file:", file)
+    if not os.path.isfile("webcomic/" + file):
+        print("ERROR: The file doesn't exist. This cannot be recovered!")
+        clearWorkspace() ## We don't want to serve anything if there's an error.
+        sys.exit(1)
     nicedate = convertDateToRegular(date)
     websafename = convertNameToWeb(name)
     if websafename in namesSoFar:
         print("ERROR: you have a duplicate comic name. This build will not succeed until you fix it. The comic name is " + name)
-        break;
+        clearWorkspace() ## We don't want to serve anything if there's an error.
+        sys.exit(1)
     namesSoFar.append(websafename)
     url = websafename + ".html"
-    print("Comic name:", name, "\nComic file:", file, "\n")
     comicFile = open(url, "w+")
     comicFile.write(comicTemplate.format(comicimage = "webcomic/" + file,\
                                          logo = LOGO,\
@@ -126,6 +140,7 @@ for n in range(0, len(comicsplit)): ## For the record, I'm doing it wrong.
                                          nextLink = nextcomic,\
                                          lastLink = convertNameToWeb(latestcomic[1])))
     comiclinks.append("<a href=\"" + websafename + "\"'>" + nicedate + " (#" + str(n+1) + "): " + name + "</a>")
+    print() ## Add a newline for the next comic operation.
 
 comiclinks.reverse()
 

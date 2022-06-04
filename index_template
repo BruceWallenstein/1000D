@@ -6,9 +6,22 @@
 		<link rel="stylesheet" href="main.css" />
 	</head>
 	<body>
-		<h1>{sitename}</h1>
-		<div id = "comiclinks">
-			{comiclinks}
+		<h1>{sitename} - The Webcomic</h1>
+		<div id="flexy">
+			<div id="about">
+				<h2>About {sitename}</h2>
+				<div>
+					{sitename} is a webcomic written, drawn, and colorized by Bruce Wallenstein and Grant Rajesh. It began on June 3, 2022.
+					<div></div>
+					As a younger webcomic, we don't have a set posting plan yet, but we expect to post around Friday of every week. We may start posting bi-or-tri-weekly later on.
+				</div>
+			</div>
+			<div id = "comiclinks">
+				<h2>Comics in order</h2>
+				<div>
+					{comiclinks}
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

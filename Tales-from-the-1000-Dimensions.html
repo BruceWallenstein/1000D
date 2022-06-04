@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Tales from the 1000 Dimensions: Tales from the 1000 Dimensions</title>
+		<link rel="stylesheet" href="comic.css" />
+	</head>
+	<body>
+		<div id="nav">
+			<a href="/" id="home" class="navbutton">
+				<img src="logo.png" alt="Tales from the 1000 Dimensions logo" />
+			</a>
+		</div>
+		<h1 id="title">Tales from the 1000 Dimensions</h1>
+		<p id="comicdate">June 03, 2022</p>
+		<div id="comic"><img src="webcomic/comic_1_digitaltext.png" /></div>
+		<a id = "firstLink" href="Tales-from-the-1000-Dimensions" class="comicnavlink">|&lt;</a>
+		<a id = "backLink" href="CAP" class="comicnavlink">&lt;</a>
+		<a id = "nextLink" href="CAP" class="comicnavlink">&gt;</a>
+		<a id = "lastLink" href="Tales-from-the-1000-Dimensions" class="comicnavlink">&gt;|</a>
+		<script type="text/javascript">
+			var nextButtonEl = document.getElementById("nextLink");
+			var lastButtonEl = document.getElementById("lastLink");
+			var backButtonEl = document.getElementById("backLink");
+			var firstButtonEl = document.getElementById("firstLink");
+			if ("CAP" == "CAP"){
+				nextButtonEl.parentNode.removeChild(nextButtonEl);
+				lastButtonEl.parentNode.removeChild(lastButtonEl);
+			}
+			if ("CAP" == "CAP"){
+				backButtonEl.parentNode.removeChild(backButtonEl);
+				firstButtonEl.parentNode.removeChild(firstButtonEl);
+			}
+		</script>
+	</body>
+</html>

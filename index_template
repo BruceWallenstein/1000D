@@ -11,9 +11,9 @@
 			<div id="about">
 				<h2>About {sitename}</h2>
 				<div>
-					{sitename} is a webcomic written, drawn, and colorized by Bruce Wallenstein and Grant Rajesh. It began on June 3, 2022.
-					<div></div>
-					As a younger webcomic, we don't have a set posting plan yet, but we expect to post around Friday of every week. We may start posting bi-or-tri-weekly later on.
+					A webcomic about invention, peckarts, and teenage angst, written by Bruce Wallenstein and Grant Rajesh.
+					<br />
+					Updates bi-or-tri-weekly.
 				</div>
 			</div>
 			<div id = "comiclinks">

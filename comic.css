@@ -3,6 +3,10 @@
 	padding: 0px;
 }
 
+:root{
+	--nav-img-size: min(10vh, 10vw);
+}
+
 body {
 	display: grid;
 	grid-template-areas:
@@ -11,19 +15,17 @@ body {
 	'comicdate  comicdate  comicdate  comicdate  comicdate'
 	'comic      comic      comic      comic      comic'
 	'navfirst   navback    .          navnext    navlast';
+	grid-auto-rows: min-content min-content min-content auto min-content;
 	text-align: center;
 	min-height: 100vh;
 }
 
 #nav > a {
-	background-color: yellow;
-	padding: 10px;
 }
 
 #nav{
 	grid-area: nav;
 	text-align: left;
-	margin-bottom: 20px;
 }
 
 #comic{
@@ -59,3 +61,9 @@ body {
 	padding: 20px;
 	margin: auto;
 }
+
+#nav > a > img{
+	width: var(--nav-img-size);
+	height: var(--nav-img-size);
+}
+

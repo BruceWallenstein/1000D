@@ -4,12 +4,14 @@
 		<meta charset="utf-8" />
 		<title>{sitename}</title>
 		<link rel="stylesheet" href="main.css" />
+		<link rel="icon" href="{logo}" />
 	</head>
 	<body>
-		<h1>{sitename} - The Webcomic</h1>
+		<h1 id="title">{sitename} - The Webcomic</h1>
 		<div id="flexy">
 			<div id="about">
 				<h2>About {sitename}</h2>
+				<img src="{logo}" />
 				<div>
 					A webcomic about invention, peckarts, and teenage angst, written by Bruce Wallenstein and Grant Rajesh.
 					<br />

@@ -10,10 +10,11 @@ if len(sys.argv) > 1:
         print("Ex.\n0 \"My First Comic\" my_first_comic.png")
         print("You'll also need to add the file under 'webcomic'. The filenames are automatically assumed to stem from there.")
         print()
-        print("To print this help message, run `./load -help`. To clear the workspace (delete all HTML files, so they can be regenerated freshly), run `./load -clear`.")
+        print("To print this help message, run `./load -help`. To clear the workspace (delete all HTML files), run `./load -clear`; this is done automatically when you build the site, as well.")
         sys.exit(0)
     elif sys.argv[1] == "-clear":
-        pass ## TODO: add clearing
+        clearWorkspace()
+        sys.exit(0)
 
 SITENAME = "1000D"
 BASEURL = "/1000D" ## This is for relative links. The entire site will break if it's not set properly!
@@ -56,6 +57,7 @@ def getComicDataFromComicString(comicString):
     date = ""
     name = ""
     comicfile = ""
+    bottomthing = ""
     escape = False
     for x in comicString:
         if phase == 0:
@@ -81,8 +83,19 @@ def getComicDataFromComicString(comicString):
                 phase = 4
                 comicfile += x
         elif phase == 4:
-            comicfile += x
-    return (date, name, comicfile)
+            if x == " ":
+                phase = 5
+            else:
+                comicfile += x
+        elif phase == 5:
+            if x == '"':
+                phase = 6
+        elif phase == 6:
+            if x == '"':
+                phase = 7
+            else:
+                bottomthing += x
+    return (date, name, comicfile, bottomthing)
 
 def convertDateToRegular(date):
     return (conceptiondate + datetime.timedelta(days=date)).strftime("%B %d, %Y")
@@ -114,7 +127,7 @@ for n in range(0, len(comicsplit)): ## For the record, I'm doing it wrong.
         lastcomic = convertNameToWeb(getComicDataFromComicString(comicsplit[n - 1])[1])
     if n < len(comicsplit) - 1:
         nextcomic = convertNameToWeb(getComicDataFromComicString(comicsplit[n + 1])[1])
-    date, name, file = getComicDataFromComicString(comic)
+    date, name, file, bottomthing = getComicDataFromComicString(comic)
     print("Comic name:", name, "\nComic file:", file)
     if not os.path.isfile("webcomic/" + file):
         print("ERROR: The file doesn't exist. This cannot be recovered!")
@@ -138,7 +151,8 @@ for n in range(0, len(comicsplit)): ## For the record, I'm doing it wrong.
                                          firstLink = convertNameToWeb(firstcomic[1]),\
                                          backLink = lastcomic,\
                                          nextLink = nextcomic,\
-                                         lastLink = convertNameToWeb(latestcomic[1])))
+                                         lastLink = convertNameToWeb(latestcomic[1]),\
+                                         bottomthing = bottomthing))
     comiclinks.append("<a href=\"" + websafename + "\"'>" + nicedate + " (#" + str(n+1) + "): " + name + "</a>")
     print() ## Add a newline for the next comic operation.
 

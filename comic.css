@@ -16,7 +16,7 @@ body {
 	'comic      comic      comic      comic      comic'
 	'caption    caption    caption    caption    caption'
 	'navfirst   navback    .          navnext    navlast';
-	grid-auto-rows: min-content min-content min-content auto min-content;
+	grid-auto-rows: min-content min-content min-content min-content min-content;
 	text-align: center;
 	min-height: 100vh;
 }
@@ -70,5 +70,11 @@ body {
 #nav > a > img{
 	width: var(--nav-img-size);
 	height: var(--nav-img-size);
+}
+
+#comic > img{
+	width: 30vw;
+}
+
 }
 

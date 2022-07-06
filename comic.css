@@ -15,7 +15,8 @@ body {
 	'comicdate  comicdate  comicdate  comicdate  comicdate'
 	'comic      comic      comic      comic      comic'
 	'caption    caption    caption    caption    caption'
-	'navfirst   navback    .          navnext    navlast';
+	'navfirst   navback    .          navnext    navlast'
+	'comment    comment    comment    comment    comment';
 	grid-auto-rows: min-content min-content min-content min-content min-content;
 	text-align: center;
 	min-height: 100vh;
@@ -76,5 +77,9 @@ body {
 	width: 30vw;
 }
 
+#disqus_thread{
+	grid-area: comment;
+	margin-left: 10vw;
+	margin-right: 10vw;
 }
 

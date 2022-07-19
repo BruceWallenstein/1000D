@@ -5,6 +5,7 @@
 		<title>{sitename}: {comicname}</title>
 		<link rel="stylesheet" href="comic.css" />
 		<link rel="icon" href="{logo}" />
+		<meta name="twitter:card" content="summary_large_image">
 		<meta name="og:image" content="{baseurl}/{comicimage}" />
 		<meta name="og:title" content="{sitename}: {comicname}" />
 		<meta name="og:url" content="{baseurl}" />

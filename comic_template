@@ -5,6 +5,11 @@
 		<title>{sitename}: {comicname}</title>
 		<link rel="stylesheet" href="comic.css" />
 		<link rel="icon" href="{logo}" />
+		<meta name="og:image" content="{comicimage}" />
+		<meta name="og:title" content="{sitename}: {comicname}" />
+		<meta name="og:url" content="{baseurl}" />
+		<meta name="og:description" content="A comic by Bruce Wallenstein and Grant Rajesh" />
+		<meta name="og:type" content="article" />
 	</head>
 	<body>
 		<div id="nav">

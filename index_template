@@ -24,6 +24,12 @@
 					{comiclinks}
 				</div>
 			</div>
+			<div id = "ourfriendslinks">
+				<h2>Our Friends</h2>
+				<ul>
+					<li><a href="https://linuxrocks2000.github.io/">LinuxRocks2000</a></li>
+				</ul>
+			</div>
 		</div>
 	</body>
 </html>

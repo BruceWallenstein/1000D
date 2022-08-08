@@ -134,6 +134,7 @@ for n in range(0, len(comicsplit)): ## For the record, I'm doing it wrong.
         clearWorkspace() ## We don't want to serve anything if there's an error.
         sys.exit(1)
     nicedate = convertDateToRegular(date)
+    print("Date:", date, "\nNice date:", nicedate)
     websafename = convertNameToWeb(name)
     if websafename in namesSoFar:
         print("ERROR: you have a duplicate comic name. This build will not succeed until you fix it. The comic name is " + name)

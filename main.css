@@ -34,8 +34,11 @@ h1 {
 }
 
 #comiclinks > div > a:hover{
-	color: yellow;
-	border-right: 2px solid yellow;
+	font-weight: bold;
+	border-right: 10px solid yellow;
+}
+#comiclinks {
+	flex: 1;
 }
 
 body {
@@ -46,6 +49,12 @@ body {
 #flexy {
 	display: flex;
 	min-height: 100%;
+}
+
+#bottom{
+	background-color: rgb(25, 25, 25);
+	color: white;
+	padding: 50px;
 }
 
 #about {

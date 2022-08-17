@@ -7,7 +7,7 @@
 	--nav-img-size: min(10vh, 10vw);
 }
 
-body {
+#main {
 	display: grid;
 	grid-template-areas:
 	'nav        nav        nav        nav        nav'

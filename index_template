@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<title>{sitename}</title>
 		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="bottom.css" />
 		<link rel="icon" href="{logo}" />
 	</head>
 	<body>
@@ -31,10 +32,6 @@
 				</ul>
 			</div>
 		</div>
-		<div id="bottom">
-			<p id="cpright">
-				Website © Tyler Clarke and Bruce Wallenstein
-			</p>
-		</div>
+		{bottomBar}
 	</body>
 </html>

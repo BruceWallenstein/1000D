@@ -51,12 +51,6 @@ body {
 	min-height: 100%;
 }
 
-#bottom{
-	background-color: rgb(25, 25, 25);
-	color: white;
-	padding: 50px;
-}
-
 #about {
 	min-width: 20vw;
 	max-width: 30vw;

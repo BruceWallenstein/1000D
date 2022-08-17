@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<title>1000D: Htwooh Lost Some Bets</title>
 		<link rel="stylesheet" href="comic.css" />
+		<link rel="stylesheet" href="bottom.css" />
 		<link rel="icon" href="favicon.png" />
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="og:image" content="/1000D/webcomic/htwooh-lost-some-bets.png" />
@@ -13,51 +14,59 @@
 		<meta name="og:type" content="article" />
 	</head>
 	<body>
-		<div id="nav">
-			<a href="/1000D" id="home" class="navbutton">
-				<img src="favicon.png" alt="1000D logo" />
-			</a>
+		<div id="main">
+			<div id="nav">
+				<a href="/1000D" id="home" class="navbutton">
+					<img src="favicon.png" alt="1000D logo" />
+				</a>
+			</div>
+			<h1 id="title">Htwooh Lost Some Bets</h1>
+			<p id="comicdate">August 17, 2022</p>
+			<div id="comic"><img src="webcomic/htwooh-lost-some-bets.png" /></div>
+			<p style = "font-family: sans-serif; font-size: 1.5em; margin-bottom: 0.7em;" id="caption">In reality I did lose two bets and I now have a whole lot of things to write for Tyler.</p>
+			<a id = "firstLink" href="Tales-from-the-1000-Dimensions" class="comicnavlink">|&lt;</a>
+			<a id = "backLink" href="Opinions" class="comicnavlink">&lt;</a>
+			<a id = "nextLink" href="CAP" class="comicnavlink">&gt;</a>
+			<a id = "lastLink" href="Htwooh-Lost-Some-Bets" class="comicnavlink">&gt;|</a>
+			<div id="disqus_thread"></div>
+			<script>
+			    /**
+			    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+			    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+			    /*
+			    var disqus_config = function () {
+			    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+			    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+			    };
+			    */
+			    (function() { // DON'T EDIT BELOW THIS LINE
+			    var d = document, s = d.createElement('script');
+			    s.src = 'https://bruce-wallenstein.disqus.com/embed.js';
+			    s.setAttribute('data-timestamp', +new Date());
+			    (d.head || d.body).appendChild(s);
+			    })();
+			</script>
+			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			<script type="text/javascript">
+				var nextButtonEl = document.getElementById("nextLink");
+				var lastButtonEl = document.getElementById("lastLink");
+				var backButtonEl = document.getElementById("backLink");
+				var firstButtonEl = document.getElementById("firstLink");
+				if ("CAP" == "CAP"){
+					nextButtonEl.parentNode.removeChild(nextButtonEl);
+					lastButtonEl.parentNode.removeChild(lastButtonEl);
+				}
+				if ("Opinions" == "CAP"){
+					backButtonEl.parentNode.removeChild(backButtonEl);
+					firstButtonEl.parentNode.removeChild(firstButtonEl);
+				}
+			</script>
 		</div>
-		<h1 id="title">Htwooh Lost Some Bets</h1>
-		<p id="comicdate">August 17, 2022</p>
-		<div id="comic"><img src="webcomic/htwooh-lost-some-bets.png" /></div>
-		<p style = "font-family: sans-serif; font-size: 1.5em; margin-bottom: 0.7em;" id="caption">In reality I did lose two bets and I now have a whole lot of things to write for Tyler.</p>
-		<a id = "firstLink" href="Tales-from-the-1000-Dimensions" class="comicnavlink">|&lt;</a>
-		<a id = "backLink" href="Opinions" class="comicnavlink">&lt;</a>
-		<a id = "nextLink" href="CAP" class="comicnavlink">&gt;</a>
-		<a id = "lastLink" href="Htwooh-Lost-Some-Bets" class="comicnavlink">&gt;|</a>
-		<div id="disqus_thread"></div>
-		<script>
-		    /**
-		    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-		    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-		    /*
-		    var disqus_config = function () {
-		    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-		    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-		    };
-		    */
-		    (function() { // DON'T EDIT BELOW THIS LINE
-		    var d = document, s = d.createElement('script');
-		    s.src = 'https://bruce-wallenstein.disqus.com/embed.js';
-		    s.setAttribute('data-timestamp', +new Date());
-		    (d.head || d.body).appendChild(s);
-		    })();
-		</script>
-		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		<script type="text/javascript">
-			var nextButtonEl = document.getElementById("nextLink");
-			var lastButtonEl = document.getElementById("lastLink");
-			var backButtonEl = document.getElementById("backLink");
-			var firstButtonEl = document.getElementById("firstLink");
-			if ("CAP" == "CAP"){
-				nextButtonEl.parentNode.removeChild(nextButtonEl);
-				lastButtonEl.parentNode.removeChild(lastButtonEl);
-			}
-			if ("Opinions" == "CAP"){
-				backButtonEl.parentNode.removeChild(backButtonEl);
-				firstButtonEl.parentNode.removeChild(firstButtonEl);
-			}
-		</script>
+		<div id="bottom">
+	<p id="cpright">
+		Website © <a href="https://linuxrocks2000.github.io/">Tyler Clarke</a> (of LinuxRocks2000) and Bruce Wallenstein.<br><a href="mailto:brucewallenstein@gmail.com">brucewallenstein@gmail.com</a>
+	</p>
+</div>
+
 	</body>
 </html>

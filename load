@@ -32,6 +32,9 @@ comicTemplateFile = open("comic_template")
 comicTemplate = comicTemplateFile.read()
 comicTemplateFile.close()
 
+bottomTemplateFile = open("bottom_template")
+bottomTemplate = bottomTemplateFile.read()
+bottomTemplateFile.close()
 
 
 comiclist = open("comic.cnf")
@@ -153,14 +156,15 @@ for n in range(0, len(comicsplit)): ## For the record, I'm doing it wrong.
                                          backLink = lastcomic,\
                                          nextLink = nextcomic,\
                                          lastLink = convertNameToWeb(latestcomic[1]),\
-                                         bottomthing = bottomthing))
+                                         bottomthing = bottomthing,\
+                                         bottomBar = bottomTemplate))
     comiclinks.append("<a href=\"" + websafename + "\"'>" + nicedate + " (#" + str(n+1) + "): " + name + "</a>")
     print() ## Add a newline for the next comic operation.
 
 comiclinks.reverse()
 
 indexHTMLFile = open("index.html", "w+")
-indexHTMLFile.write(indexTemplate.format(sitename = SITENAME, comiclinks = "".join(comiclinks), baseurl = BASEURL, logo=LOGO))
+indexHTMLFile.write(indexTemplate.format(sitename = SITENAME, comiclinks = "".join(comiclinks), baseurl = BASEURL, logo=LOGO, bottomBar = bottomTemplate))
 indexHTMLFile.close()
 
 print("Run this script with -help for instructions on adding new comics.")
